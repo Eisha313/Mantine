@@ -1,0 +1,99 @@
+/* Signup.css */
+.Box {
+  max-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  background-color:  rgb(211, 103, 103);;
+  /* border: 1px solid #9b5050; */
+  /* Light gray */
+  border-radius: 4px;
+  padding: 8px;
+  color: #000000; /* Black */
+  justify-content: center;
+  margin-bottom: 120px;
+}
+
+.TextInput::placeholder,
+.PasswordInput::placeholder,
+.Select::placeholder {
+  color: #771717; /* Light gray */
+}
+
+.TextInput:focus,
+.PasswordInput:focus,
+.Select:focus {
+  border-color: #0c67a8; /* Dark blue */
+  outline: none;
+}
+
+.TextInput.error,
+.PasswordInput.error,
+.Select.error,
+.Checkbox.error {
+  border-color: #e74c3c; /* Red */
+}
+
+.TextInput.error::placeholder,
+.PasswordInput.error::placeholder,
+.Select.error::placeholder,
+.Checkbox.error::placeholder {
+  color: #e74c3c; /* Red */
+}
+
+.Select {
+  cursor: pointer;
+}
+
+.Checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Checkbox span {
+  margin-left: 8px;
+}
+
+.Button {
+  margin-top: 16px;
+  background-color: #0c67a8; /* Dark blue */
+  color: #ffffff; /* White */
+  border: none;
+  border-radius: 4px;
+  /* padding: 12px 16px; */
+  cursor: pointer;
+}
+
+.Button:hover {
+  background-color: #094b80; /* Darker blue */
+}
+
+.disabled {
+  background-color: #f2f2f2; /* Light gray */
+  cursor: not-allowed;
+  color: #a0a0a0; /* Light gray */
+}
+
+.error {
+  color: #e74c3c; /* Red */
+  margin-top: 4px;
+  font-size: 12px;
+}
+.titleStyle {
+ color: #ffffff;
+ 
+  font-size: 24px;
+    font-weight: bold;
+  }
+.privacy{
+  color: #ffffff;
+  font-weight: bold;
+}

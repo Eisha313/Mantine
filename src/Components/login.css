@@ -1,0 +1,92 @@
+.containerStyle  {
+  display: flex;
+  
+  flex-direction: column;
+  /* align-i */
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(211, 103, 103);
+  
+  padding: 20px;
+ border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  height :500px;
+  
+   /* margin-left:350px; */
+   width:300px;
+   margin-right: 60px;
+   margin-bottom: 140px;
+}
+.titleStyle {
+  color: "#ffffff";
+ 
+  font-size: 24px;
+  font-weight: bold;
+  /* margin-bottom: 16px; */
+  margin-bottom:2px;
+};
+
+.inputStyle {
+  /* Define your desired styles here */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #2124d3;
+  color: #333;
+}
+
+
+.inputStylee {
+  /* Define your desired styles here */
+  width: 100%;
+  /* height: 100px; */
+  padding: 10px;
+  
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: rgb(211, 103, 103);
+  color: #333;
+}
+
+.buttonStyle {
+ 
+  padding: 8px;
+  border: none;
+  border-radius: 2px;
+  background-color:  #2650db;
+  color: #ffffff;
+  cursor: pointer;
+  margin-top:10px;
+};
+
+.buttonHoverStyle {
+  background-color: #404040,
+};
+.new1{
+ 
+ padding: 20px;
+  margin-left:140px;
+}
+.socialbuttons{
+ /* margin-top: 2800px; */
+ padding: 20px;
+}
+.buttonStyle{
+  margin-top: 10px;
+}
+.new{
+  margin-top: 10px;
+}
+.submit{
+  margin-top: 10px;
+}
+.sign{
+  margin-top: 10px;
+}
+.forg{
+  color:#ffffff;
+  background-color: aqua;
+  font-weight: bold;
+}

@@ -1,0 +1,155 @@
+.Appshell{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial,;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content:  space-between;
+    
+    background-color:#7e6565;
+    color: #ffffff;
+}
+.Grid{
+    background-color:#ffffff;
+    color:#ffffff;
+    position: static;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    /* width: 20px; */
+
+}.class{
+border: 8px solid black;
+border-radius:6px;
+background-color: rgb(156, 145, 141);
+display: flex;
+align-items: right;
+justify-content: right;
+margin-bottom:40px;
+margin-right: 100px;
+height: 150px;
+width:300px;
+
+}
+
+
+
+
+.Navbar{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    height:85%;
+    background-color: #585252;
+    color: #ffffff;
+    
+
+}
+.Footer{
+    display: flex;
+    align-items: center;
+    justify-content:  space-between;
+    
+    background-color:#7e6565;
+    color: #ffffff;
+
+}
+
+  .add{
+    display: flex;
+
+  }
+
+@media screen and (max-width: 768px) {
+    .Navbar {
+      width: 100%;
+      display: none;
+    }
+  
+    .header {
+      height: 80px;
+    }
+  
+    .header Text {
+      font-size: 14px;
+    }
+  
+/*   
+    .grid-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    } */
+  
+    /* .Grid {
+      width: 100%;
+    }
+  
+    .Grid.Col {
+      flex-basis: 50%;
+    } */
+  }
+  /* @media only screen and (max-width: 480px) {
+    .mobileshow {
+      display: block !important;
+    }
+  } */
+  .MobileNavbar {
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    .Navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+  
+    /* .MobileNavbar {
+      display: block;
+    
+    } */
+  /* } */
+  /* @media (max-width: 767px) {
+    .Navbar {
+      display: flex !important;
+      
+    } */
+    
+  }
+  @media (max-width: 768px) {
+    .Navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+}
+.box{
+    background-color:#7e6565;
+    position: static;
+    color:#ffffff;
+
+
+   
+
+}
+.box label{
+    /* color: white; */
+}
+.babyheader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.babyfooter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

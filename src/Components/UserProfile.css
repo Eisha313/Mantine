@@ -1,0 +1,45 @@
+body{
+    height: 900px;
+}
+.form-container {
+    max-width: 420px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background-color:  rgb(211, 103, 103);;
+  }
+  
+  /* Styling for input fields */
+  .input-field {
+    width: 100%;
+    padding: 2px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+   
+    border-radius: 1px;
+    font-size: 12px;
+    padding-left: 60px;
+  }
+  
+  /* Styling for the submit button */
+  .submit-button {
+    /* width: 100%; */
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #2650db;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left:60px;
+  }
+  .profile{
+    margin-bottom:20px;
+    margin-top: 40px;
+  }
+  .edit{
+    margin-left: 120px;
+  }
