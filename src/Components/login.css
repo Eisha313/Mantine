@@ -54,11 +54,12 @@
  
   padding: 8px;
   border: none;
-  border-radius: 2px;
+  /* border-radius: 2px; */
   background-color:  #2650db;
   color: #ffffff;
   cursor: pointer;
   margin-top:10px;
+  /* margin-right:0px; */
 };
 
 .buttonHoverStyle {
@@ -69,10 +70,7 @@
  padding: 20px;
   margin-left:140px;
 }
-.socialbuttons{
- /* margin-top: 2800px; */
- padding: 20px;
-}
+
 .buttonStyle{
   margin-top: 10px;
 }
@@ -87,6 +85,16 @@
 }
 .forg{
   color:#ffffff;
-  background-color: aqua;
+  background-color: rgb(30, 231, 131);
   font-weight: bold;
+}
+.forgetpassword{
+ margin-top:20px; 
+border: none;
+
+ 
+  
+}
+.socialButtons{
+  margin-top: 35px;
 }

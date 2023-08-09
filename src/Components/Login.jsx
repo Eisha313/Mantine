@@ -111,20 +111,28 @@ function Login() {
             placeholder="your@email.com"
             {...form.getInputProps("email")}
           />
+           <PasswordInput className="inputStylee"
+            label="Password"
+            required
+            
+            // value={form.values.password}
+            // onChange={form.handleChange("password")}
+            {...form.getInputProps("password")}
+          />
+
 
           {/* ... rest of the form ... */}
 
-          <Button type="submit" className="buttonStyle">
+          <Button  classNames="submit"type="submit" className="buttonStyle">
             Login
           </Button>
-          <Link to="/ForgetPassword">
-          <Button>ForgetPassword</Button>
+            <div className="forgetpassword">  
+          <Link  to="/ForgetPassword">
+          <Button >ForgetPassword</Button>
           </Link>
-
+          </div>
           <div className="socialButtons">
-            {/* <Button onClick={handleSocialSignIn}>Sign in with Google</Button> */}
-            {/* ... other social sign-in buttons ... */}
-            <GoogleLogin
+          <GoogleLogin 
               onSuccess={(credentialResponse) => {
                 console.log(credentialResponse);
                 navigate("/GetProfile")
@@ -133,7 +141,14 @@ function Login() {
                 console.log("Login Failed");
               }}
             />
-          </div>
+            </div>
+          {/* </div>  */}
+
+          {/* <div className="socialButtons"> */}
+            {/* <Button onClick={handleSocialSignIn}>Sign in with Google</Button> */}
+            {/* ... other social sign-in buttons ... */}
+            
+          {/* </div> */}
 
           {/* ... rest of the form ... */}
         </div>
