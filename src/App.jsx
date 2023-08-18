@@ -20,12 +20,13 @@ export default function App() {
   const [state, setState] = useState(Array(9).fill(null));
   const [isWinner, setWinner] = useState(false);
   const [message, setMessage] = useState("");
+  const [gameStarted, setGameStarted] = useState(false);
   useEffect(() => {
     if (isWinner) {
       console.log("verify");
       setMessage(`${isWinner} CONGRATS YOU WON`);
 
-      // setState(Array(9).fill(null))
+      setState(Array(9).fill(null))
       setWinner(false);
     }
     setWinner(checkWinner());
@@ -70,6 +71,9 @@ export default function App() {
     
 
   function handlingClick(i) {
+    if (!gameStarted || state[i] !== null) {
+      return;
+    }
     if(state[i]==null){
     
     if (isWinner) {
@@ -125,8 +129,12 @@ export default function App() {
 
   return (
     <>
+    <div className="boardContainer">
+      {gameStarted ? (
+        <>
+          {message}
       <div className="boardContainer">
-        {/* {isWinner ? <>{message}</> : <></>} */}
+        
         {message}
 
         {/* <div className="boardContainer>"{isWinner?(<>{isWinner}Congrats!You won the game</>)} */}
@@ -146,13 +154,23 @@ export default function App() {
           <Square value={state[7]} onClick={() => handlingClick(7)} />
           <Square value={state[8]} onClick={() => handlingClick(8)} />
         </div>
+        </div>
         <div>
           <button className="resett" onClick={() => setting()}>
             RESET
           </button>
         </div>
-        {/* </div> */}
-      </div>
-    </>
-  );
+        
+        </>
+      ) : (
+        <button style={{backgroundColor:"black",border:"1px solid white",color:"white"}} onClick={() => setGameStarted(true)}>
+          Start Game
+        </button>
+      )}
+    </div>
+  </>
+);
+
+       
+     
 }
