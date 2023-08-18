@@ -1,0 +1,42 @@
+
+
+body{
+    background-color: rgb(173, 153, 192);
+    display: flex;
+    justify-content: right;
+   
+  }
+  .options{
+   margin-left: 40px;
+   margin-right: 80px;
+   margin-top: 220px;
+   background-color: brown;
+   color: brown;
+   
+  
+  }
+  table{
+   
+    margin-right: 0px;
+    margin-top: 50px;
+    margin-left:130px ;
+    
+  
+  }
+  .row6{
+    margin-left: 98px;
+  }
+  .box{
+  
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 15px;
+    background-color:aquamarine;
+    border:5px solid black;
+    height: 30px;
+    width: 30px;
+  }
+  .dashes{
+    font-size: 60px;
+  }
