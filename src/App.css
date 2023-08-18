@@ -1,0 +1,46 @@
+*{
+    background-color:khaki;
+    /* text-align: center; */
+    
+    
+    /* width: 50%; */
+    /* display: flex;
+    justify-content: center;
+    text-align: center; */
+}
+body{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.calc{
+    
+    background-color: aquamarine;
+    text-align: center;
+    border: 20 px solid black;
+
+}
+
+button{
+    color:brown;
+    background-color: blanchedalmond;
+    font-size: 30px;
+    height: 50px;
+    width: 50px;
+    border-radius: 5px;
+    cursor:pointer;
+}
+/* input:focus,
+input:active,button :focus,
+button:active{
+    outline:none;
+    
+}
+.highlight{
+    unicode-range: none;
+
+} */
+#clear{
+    font-size: 12px;
+}
