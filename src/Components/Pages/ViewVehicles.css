@@ -1,0 +1,67 @@
+.view-vehicles-container {
+    background-color: lavender;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  /* Table styles */
+  .vehicle-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .vehicle-table th,
+  .vehicle-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #555;
+  }
+  
+  /* Header row styles */
+  .vehicle-table th {
+    background-color: #555;
+    color: white;
+  }
+  
+  /* Body row styles */
+  .vehicle-table td {
+    background-color: white;
+  }
+  
+  /* Gap between Update and Delete buttons */
+  .vehicle-table td:last-child {
+    display: flex;
+    gap: 8px;
+  }
+  
+  /* Button styles */
+  .vehicle-table button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .vehicle-table button:hover {
+    background-color: #333;
+    color: white;
+  }
+  .add-vehicles-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the "View Vehicles" button */
+  .add-vehicle-button {
+    background-color: lavender;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    text-decoration: none;
+  }

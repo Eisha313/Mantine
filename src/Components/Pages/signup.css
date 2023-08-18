@@ -1,0 +1,92 @@
+body.light-theme {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+  }
+  
+  /* Container styles */
+  .fields {
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f0e6ff; /* Lavender color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  
+  /* Label styles */
+  .fields label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555555;
+  }
+  
+  /* Input styles */
+  .fields input[type="text"],
+  .fields input[type="email"],
+  .fields input[type="number"],
+  .fields input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  
+  /* Input icon styles */
+  .fields .icon {
+    position: relative;
+    top: -30px;
+    left: 94%;
+    color: #999999;
+  }
+  
+  /* Error message styles */
+  .fields p {
+    font-size: 12px;
+    color: #ff0000;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Full Name input styles */
+  .fields #fullName {
+    background-color: #f7f7f7;
+    color: #333333;
+  }
+  
+  /* Submit and Login button styles */
+  .logs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .logs button {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  /* Submit button styles */
+  .logs button:first-child {
+    background-color: #4b0082; /* Indigo color */
+    color: #ffffff;
+  }
+  
+  /* Login button styles */
+  .logs button:last-child {
+    background-color: #333333; /* Dark gray color */
+    color: #ffffff;
+  }
+  
+  .logs button:hover {
+    opacity: 0.8;
+  }

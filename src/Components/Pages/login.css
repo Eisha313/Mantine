@@ -1,0 +1,82 @@
+body.light-theme {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+  }
+  
+  /* Container styles */
+  .styy {
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f0e6ff; /* Lavender color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  
+  /* Label styles */
+  .styy label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555555;
+  }
+  
+  /* Input styles */
+  .styy input[type="email"],
+  .styy input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  
+  /* Error message styles */
+  .styy p {
+    font-size: 12px;
+    color: #ff0000;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Button styles */
+  .sty {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .sty button {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  /* Login button styles */
+  .sty button:first-child {
+    background-color: #4b0082; /* Indigo color */
+    color: #ffffff;
+  }
+  
+  /* Forgot Password button styles */
+  .sty button:nth-child(2) {
+    background-color: #333333; /* Dark gray color */
+    color: #ffffff;
+  }
+  
+  /* Sign Up button styles */
+  .sty button:last-child {
+    background-color: #4b0082; /* Indigo color */
+    color: #ffffff;
+  }
+  
+  .sty button:hover {
+    opacity: 0.8;
+  }
