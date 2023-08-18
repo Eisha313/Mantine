@@ -1,4 +1,4 @@
-.Appshell{
+/* .Appshell{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,8 @@
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     /* width: 20px; */
 
-}.class{
+/* } */
+.class{
 border: 8px solid black;
 border-radius:6px;
 background-color: rgb(156, 145, 141);
@@ -152,4 +153,4 @@ width:300px;
     justify-content: center;
     align-items: center;
 
-}
+} 

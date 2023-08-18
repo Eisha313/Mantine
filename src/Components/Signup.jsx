@@ -40,7 +40,7 @@ function Signup() {
           ? null
           : "Invalid lastName",
 
-          email: (value) => (/.+@\S+$/.test(value) ? null : 'Invalid email'),
+      email: (value) => (/.+@\S+$/.test(value) ? null : "Invalid email"),
       // password: (value) =>
       // /^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{8,}$/.test(value)
       // /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(value)
@@ -61,39 +61,30 @@ function Signup() {
   });
   const navigate = useNavigate();
   const signingIn = async (values) => {
-    if (
-      !values.email.length ||
-      !values.password.length ||
-      // !values.ConfirmPassword.length ||
-      // !values.fullName.length ||
-      !values.lastName.length
-    ) {
-    } else {
-      const dataToSend = {
-        email: values.email,
-        password: values.password,
+    const dataToSend = {
+      email: values.email,
+      password: values.password,
 
-        firstName: values.firstName,
-        lastName: values.lastName,
-        fullName: values.fullName,
-        // zipCode: values.zipCode,
-        userType: values.userType,
-      };
-      console.log(dataToSend);
+      firstName: values.firstName,
+      lastName: values.lastName,
+      fullName: values.fullName,
+      // zipCode: values.zipCode,
+      userType: values.userType,
+      
+    };
+    console.log(dataToSend);
 
-      try {
-        const response = await axios.post(
-          "http://localhost:3000/auth/register",
-          dataToSend
-        );
-        console.log(response.data);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/auth/register",
+        dataToSend
+      );
+      console.log(response.data);
 
-
-        navigate("/Login");
-        // <Link to="/Login"></Link>
-      } catch (error) {
-        console.log("Error fetching data:", error);
-      }
+      navigate("/login");
+      // <Link to="/Login"></Link>
+    } catch (error) {
+      console.log("Error fetching data:", error);
     }
   };
 
@@ -198,7 +189,3 @@ function Signup() {
 }
 
 export default Signup;
-
-const handlelogs = () => {
-  navigate("/Login");
-};

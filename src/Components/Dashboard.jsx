@@ -1,277 +1,134 @@
-import {
-  AppShell,
-  Badge,
-  Text,
-  Navbar,
-  Header,
-  Grid,
-  Footer,
-  MediaQuery,
-  rem,
-  em,
-  Box,
-  NavLink,
-} from "@mantine/core";
-import {Link} from "react-router-dom"
-import {
-  IconCircleOff,
-  IconGauge,
-  IconChevronRight,
-} from "@tabler/icons-react";
-import {
-  LayoutDashboard,
-  BrandShopee,
-  Settings,
-  MoodAngry,
-  Focus2,
-  ReportMoney,
-  FileDollar,
-  BabyCarriage,
-  ClipboardList,
-  Help,
-  Location,
-  InfoCircle,
-  Man,Car
-} from "tabler-icons-react";
-import "./Dashboard.css";
-import "./Addvehicle.jsx";
+import { Box, SimpleGrid } from "@mantine/core";
+import React from "react";
+import DashboardStat from "./DashboardStat";
+import BarChart from "../../utils/BarChart";
+import PieChartData from "../../utils/PieChartData";
+import { Car, MessageCircle, MessageReport, ShoppingCart, Users } from "tabler-icons-react";
 
-export default function Dashboard() {
-  return (
-    <AppShell
-      padding="md"
-      navbar={
-        //     <Navbar className="Navbar"width={{ base: 300 }} height={500} p="xs">
-        //       <Text>Profile</Text>
-        //       <Text> About us</Text>
-        //       <Text>Contact Us</Text>
-        //       <Text>Add Vehicles</Text>
-        //       <Text>View Vehicles</Text>
-        //     </Navbar>
-        <Box className="box" w={240}>
-          {/* <NavLink
-            label="With right section"
-            icon={<IconGauge size="1rem" stroke={1.5} />}
-            rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
-          />
-          <NavLink
-            label="Disabled"
-            icon={<IconCircleOff size="1rem" stroke={1.5} />}
-            disabled
-          /> */}
-          <NavLink
-            label="With description"
-            description="Additional information"
-            icon={
-              <Badge size="xs" variant="filled" color="red" w={16} h={16} p={0}>
-                3
-              </Badge>
-            }
-          />
-          <NavLink
-            label="Dashboard"
-            icon={<LayoutDashboard size={40} strokeWidth={2} color={"white"} />}
-          />
-          <NavLink
-            label="Order"
-            icon={<BrandShopee size={40} strokeWidth={2} color={"white"} />}
-          />
-          <NavLink
-            label="Complain"
-            icon={<MoodAngry size={40} strokeWidth={2} color={"white"} />}
-          />
-          <NavLink
-            label="Review"
-            icon={<Focus2 size={40} strokeWidth={2} color={"white"} />}
-          />
-          <NavLink
-            label="Payment"
-            icon={<ReportMoney size={40} strokeWidth={2} color={"white"} />}
-          />
-          <div className="add">
-          {<Car size={40} strokeWidth={2} color={"white"} />}
-        
-            <Link to ="/Addvehicle"> Add vehicle</Link>
-            </div>
-{/*             
-          /> */}
+const Dashboard = () => {
 
-          <NavLink
-            label="Settings"
-            icon={<Settings size={48} strokeWidth={2} color={"white"} />}
-          />
-
-          {/* <NavLink
-        label="Active subtle"
-        icon={<IconActivity size="1rem" stroke={1.5} />}
-        rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
-        variant="subtle"
-        active
-      />
-      <NavLink
-        label="Active light"
-        icon={<IconActivity size="1rem" stroke={1.5} />}
-        rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
-        active
-      />
-      <NavLink
-        label="Active filled"
-        icon={<IconActivity size="1rem" stroke={1.5} />}
-        rightSection={<IconChevronRight size="0.8rem" stroke={1.5} />}
-        variant="filled"
-        active
-      /> */}
-        </Box>
-      }
-      header={
-        <Header className="header" height={60} p="xs">
-          <div className="babyheader">
-            <BabyCarriage size={40} strokeWidth={2} color={"White"} />
-            <Text> Logo</Text>
-          </div>
-          <div className="babyheader">
-            <ClipboardList size={40} strokeWidth={2} color={"white"} />
-
-            <Text> Features </Text>
-          </div>
-          <div className="babyheader">
-            <Help size={40} strokeWidth={2} color={"white"} />
-
-            <Text> Help</Text>
-          </div>
-        </Header>
-      }
-      styles={(theme) => ({
-        main: {
-          display: "flex",
-          backgroundColor:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[8]
-              : theme.colors.gray[0],
-
-          [`@media (max-width: 768px)`]: {
-            marginLeft: 0,
-            paddingLeft: 0,
-          },
+    const dashboardStats = [
+        {
+          Heading: "Total Users",
+          Count: 7,
+          icon: <Users strokeWidth={2} color="orange" size={20} />,
         },
-      })}
-    >
-      {/* <MediaQuery
-    query="(min-width: 768px)"
-    styles={(theme) => ({
-      Navbar: {
-        backgroundColor: theme.colorScheme === "dark" ? "#585252" : "#333333",
-        color: "#ffffff",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-evenly",
-        height: "85%",
-      },
-    })}
-  >
-    <Navbar className="Navbar">
-      <Text>Profile</Text>
-      <Text>About us</Text>
-      <Text>Contact Us</Text>
-      <Text>Add Vehicles</Text>
-      <Text>View Vehicles</Text>
-    </Navbar>
-  </MediaQuery> */}
+        {
+          Heading: "Total Orders",
+          Count: 5,
+          icon: <ShoppingCart size={20} strokeWidth={2} color={"orange"} />,
+        },
+        {
+          Heading: "Total Vehicles",
+          Count: 7,
+          icon: <Car size={20} strokeWidth={2} color={"orange"} />,
+        },
+        {
+          Heading: "Total Payments",
+          Count: 7,
+          icon: <Users strokeWidth={2} color="orange" size={20} />,
+        },
+        {
+          Heading: "Total Complaints",
+          Count: 7,
+          icon: <MessageReport size={20} strokeWidth={2} color={"orange"} />,
+        },
+        {
+          Heading: "Total Reviews",
+          Count: 7,
+          icon: <MessageCircle size={20} strokeWidth={2} color={"orange"} />,
+        },
+        {
+          Heading: "Total Accounts",
+          Count: 7,
+          icon: <Users strokeWidth={2} color="orange" size={20} />,
+        },
+        {
+          Heading: "Total Vehicles Delivered",
+          Count: 7,
+          icon: <Car size={20} strokeWidth={2} color={"orange"} />,
+        },
+      ];
+      const Data = [
+        {
+          id: 1,
+          year: 2016,
+          userGain: 80000,
+          userLost: 823,
+        },
+        {
+          id: 2,
+          year: 2017,
+          userGain: 45677,
+          userLost: 345,
+        },
+        {
+          id: 3,
+          year: 2018,
+          userGain: 78888,
+          userLost: 555,
+        },
+        {
+          id: 4,
+          year: 2019,
+          userGain: 90000,
+          userLost: 4555,
+        },
+        {
+          id: 5,
+          year: 2020,
+          userGain: 4300,
+          userLost: 234,
+        },
+      ];
+      const chartData = {
+        labels: Data.map((data) => data.year),
+        datasets: [
+          {
+            label: "Users Gained ",
+            data: Data.map((data) => data.userGain),
+            backgroundColor: [
+              "rgba(75, 192, 192, 1)",
+              "#ecf0f1",
+              "#50AF95",
+              "#f3ba2f",
+              "#2a71d0",
+            ],
+            borderColor: "black",
+            borderWidth: 2,
+          },
+        ],
+      };
+  return (
+    <>
+      <SimpleGrid
+        cols={3}
+        breakpoints={[
+          { maxWidth: "md", cols: 2, spacing: "md" },
+          { maxWidth: "xs", cols: 1, spacing: "md" },
+        ]}
+      >
+        {dashboardStats.map((item, index) => (
+          <DashboardStat
+            heading={item.Heading}
+            count={item.Count}
+            icon={item.icon}
+          />
+        ))}
+      </SimpleGrid>
+      <Box
+        p="md"
+        backgroundColor="white"
+        borderRadius={8}
+        boxShadow="sm"
+        mt="md"
+      >
+        <BarChart chartData={chartData} />
 
-      {/* Second Navbar for screen sizes < 768px */}
-      {/* <MediaQuery
-    query="(max-width: 767px)"
-    styles={(theme) => ({
-      Navbar: {
-        backgroundColor: theme.colorScheme === "dark" ? "#585252" : "#333333",
-        color: "#ffffff",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-evenly",
-        height: "85%",
-      },
-    })}
-  >
-    <Navbar className="Navbar">
-      <Text>Profile (Mobile)</Text>
-      <Text>About us (Mobile)</Text>
-      <Text>Contact Us (Mobile)</Text>
-      {/* Add any other links for mobile Navbar */}
-      {/* </Navbar>
-  </MediaQuery> */}
-
-      <Footer className="Footer" height={60} p="md">
-        <div className="babyfooter">
-          <Location size={40} strokeWidth={2} color={"white"} />
-          <Text>Location</Text>
-        </div>
-
-        <div className="babyfooter">
-          <InfoCircle size={40} strokeWidth={2} color={"white"} />
-          <Text>About us</Text>{" "}
-        </div>
-        <div className="babyfooter">
-          <Man size={40} strokeWidth={2} color={"white"} />
-          <Text>Sponsors</Text>
-        </div>
-      </Footer>
-
-      <div className="MobileNavbar">
-        <Navbar className="Navbar">
-          <Text>Profile (Mobile)</Text>
-          <Text>About us (Mobile)</Text>
-          <Text>Contact Us (Mobile)</Text>
-          {/* Add any other links for mobile Navbar */}
-        </Navbar>
-      </div>
-
-      {/* <div className="grid-container"> */}
-      <Grid
-        className="Grid"
-        style={{
-          flex: 1,
-          display:"flex",
-          // flex:  1,
-        }}
-      ><div className="first">
-        <Grid.Col span={12} className="class">
-          <FileDollar size={40} strokeWidth={2} color={"black"} />
-        </Grid.Col>
-        <Grid.Col span={12} className="class">
-          <FileDollar size={40} strokeWidth={2} color={"black"} />
-        </Grid.Col>
-        <Grid.Col span={12} className="class">
-          <FileDollar size={40} strokeWidth={2} color={"black"} />
-        </Grid.Col>
-        </div>
-        <div className="secondclass">
-
-       
-
-        <Grid.Col span={10} className="class">
-          <FileDollar size={40} strokeWidth={2} color={"black"} />
-        </Grid.Col>
-        <Grid.Col span={10} className="class">
-          <FileDollar size={40} strokeWidth={2} color={"black"} />
-        </Grid.Col>
-        <Grid.Col span={10} className="class">
-          <FileDollar size={40} strokeWidth={2} color={"black"} />
-        </Grid.Col>
-        </div>
-        <div className="thirdclass">
-
-        <Grid.Col span={10} className="class">
-          <FileDollar size={40} strokeWidth={2} color={"black"} />
-        </Grid.Col>
-        <Grid.Col span={10} className="class">
-          <FileDollar size={40} strokeWidth={2} color={"black"} />
-        </Grid.Col>
-        <Grid.Col span={10} className="class">
-          <FileDollar size={40} strokeWidth={2} color={"black"} />
-        </Grid.Col>
-        </div>
-      </Grid>
-      {/* </div> */}
-    </AppShell>
+        <PieChartData />
+      </Box>
+    </>
   );
-}
+};
+
+export default Dashboard;

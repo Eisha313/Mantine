@@ -1,0 +1,160 @@
+/* .AppShell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #37e227;
+} */
+
+/* 
+.NavLink {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  background-color: rgb(0, 0, 0);
+  color: white; /* Apply white color to the text */
+  /* margin-top: 50px;
+  height: 800px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-style: inherit;
+  gap: 10px;
+} */
+
+  /* .Navbar > *:not(:last-child) {
+    margin-bottom: 150px;
+  }
+   */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 50px; */
+    background-color: black;
+    color: rgb(255, 255, 255);
+    gap: 50px;
+  }
+  
+  .header > *:not(:last-child) {
+    margin-right: 380px;
+  }
+  
+  .Grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 8050px;
+    /* margin-top: 6px; */
+    
+    color: rgb(255, 255, 255);
+    /* height: 2px; */
+  }
+  
+  .Grid .mantine-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    background-color: #ddd;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .Footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    padding: 0 20px;
+    color: #ffffff;
+    background-color: black;
+  }
+  
+  .Footer Text {
+    font-size: 14px;
+    /* margin-left: 10px; */
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  /* svg {
+    margin-right: 10px;
+    fill: black;
+    width: 38px;
+    height: 38px;
+  } */
+  
+  
+  
+  /* db.css */
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 500px;
+  }
+  
+  .Left {
+    display: flex;
+    align-items: left;
+    gap: 40px;
+    margin-top: 2px;
+  }
+  
+  .Right {
+    display: flex;
+    align-items: right;
+    gap: 60px;
+    margin-top: 20px;
+  }
+  
+  /* //////////// */
+  
+  .header svg,
+  .header span {
+    /* fill: white;  */
+    color: white;
+  }
+  
+  .Navbar svg,
+  .Navbar span {
+    /* fill: white;  */
+    color: white;
+  }
+  
+  .Grid .same {
+    border-radius: 10px;
+    background-color: rgb(223, 133, 15);
+    height: 150px;
+    margin: 15px;
+    color: black;
+    font-size: 25px;
+    display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  }
+  
+  .Grid > .same {
+    border-radius: 10px;
+  }
+  .nav{
+    background-color: black;
+    color:white;
+  }
+  .icons{
+    margin-left:250px;
+    border-radius: 50%;
+  } */
