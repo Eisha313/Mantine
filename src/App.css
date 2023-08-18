@@ -1,0 +1,26 @@
+body{
+  display: flex;
+  justify-content: center;
+}
+.boardRow {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+}
+.square{
+background-color: rgb(11, 10, 10);
+color: white;
+height: 50px;
+width: 50px;
+vertical-align: middle;
+}
+.resett{
+  /* display: flex; */
+  background-color:lightslategray ;
+  /* justify-content: center;
+  align-items: center; */
+  border: 3px;
+   margin-left: 40px;
+  
+}
+
