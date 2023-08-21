@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   TextInput,
   Select,
@@ -17,21 +17,24 @@ import { Paperclip } from "tabler-icons-react";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 // import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 import axios from "axios";
-import {toast} from "react-hot-toast";
-const AddUserForm = () => {
+import { toast } from "react-hot-toast";
+import { useLocation, useParams } from "react-router-dom";
+const AddUserForm = ({ userId, userData }) => {
   // const [userData, setUserData] = useState("");
+  // const [editedUserData, setEditedUserData] = useState(null);
+
   const theme = useMantineTheme();
   const form = useForm({
     initialValues: {
-      firstName: editedUserData ? editedUserData.firstName : "",
-      lastName: editedUserData ? editedUserData.lastName : "",
-      email: editedUserData ? editedUserData.email : "",
-      password: editedUserData ? editedUserData.firstName : "",,
-      ConfirmPassword: "",
-      CellNumber: "",
-      StateLocation: "",
-      UserType: "",
-      ZipCode: "",
+      firstName: userData ? userData.firstName : "",
+      lastName: userData ? userData.lastName : "",
+      email: userData ? userData.email : "",
+      password: userData ? userData.password : "",
+      ConfirmPassword: userData ? userData.ConfirmPassword : "",
+      CellNumber: userData ? userData.CellNumber : "",
+      StateLocation: userData ? userData.StateLocation : "",
+      userType: userData ? ZipCode : "",
+      ZipCode: userData ? userData.ZipCode : "",
     },
     validate: {
       firstName: (value) =>
@@ -70,9 +73,23 @@ const AddUserForm = () => {
   //       [name]: value,
   //     }));
   //   };
-
+  const { id } = useParams();
   const token = localStorage.getItem("jwtToken");
-  // console.log("this is ",token)
+  useEffect(() => {
+    // Fetch user data using the userId parameter
+    try {
+      const response = axios
+        .get(`http://localhost:3000/users/${id}`, {
+          headers: {
+            Authorization: token,
+          },
+        })
+        .then((res) => form.setValues(res.data.user));
+      form.setValues(response.data);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  }, [userId, token]);
 
   const handleSubmit = async (values) => {
     console.log("hello");
@@ -84,12 +101,13 @@ const AddUserForm = () => {
       ConfirmPassword: values.ConfirmPassword,
       CellNumber: values.CellNumber,
       StateLocation: values.StateLocation,
-      UserType: values.UserType,
+      userType: values.userType,
       ZipCode: values.ZipCode,
     };
     console.log(dataToSend);
-
+    if(id===null){
     try {
+
       const response = await axios.post(
         "http://localhost:3000/users",
         dataToSend,
@@ -101,12 +119,39 @@ const AddUserForm = () => {
       );
       console.log("User Data:", form.values);
       console.log("Response:", response.data);
-      toast.success("user added successfuly")
+      toast.success("user added successfuly");
 
       form.reset();
     } catch (error) {
       console.error("Error:", error);
+    }}
+    else {
+      try{
+      const response2 = await axios.patch(
+        `http://localhost:3000/users/${id}`,
+        dataToSend,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      console.log("Response:", response2.data);
+      toast.success("User updated successfully");
+      form.reset()
     }
+   catch (error) {
+    console.error("Error:", error);
+  }}
+;
+
+
+
+
+
+
+
+   
 
     // Reset the form fields
     // setUserData({
@@ -122,7 +167,7 @@ const AddUserForm = () => {
     // });
   };
 
-  console.log(form.values)
+  console.log(form.values);
 
   return (
     <div>
@@ -151,7 +196,7 @@ const AddUserForm = () => {
                 // { value: "Accountant", label: "Accountant" },
                 // { value: "Dispatcher", label: "Dispatcher" },
               ]}
-              {...form.getInputProps("UserType")}
+              {...form.getInputProps("userType")}
             />
           </Grid.Col>
           <Grid.Col span={4}>
@@ -160,7 +205,10 @@ const AddUserForm = () => {
               withAsterisk
               placeholder="Eisha"
               required
-              {...form.getInputProps("firstName")}
+              {...form.getInputProps("firstName", {
+                initialValue: userData ? userData.firstName : "",
+              })}
+              // {...form.getInputProps("firstName")}
             />
           </Grid.Col>
           <Grid.Col span={4}>
@@ -168,7 +216,10 @@ const AddUserForm = () => {
               label="Last Name"
               placeholder="Abbasi"
               required
-              {...form.getInputProps("lastName")}
+              // {...form.getInputProps("lastName")}
+              {...form.getInputProps("lastName", {
+                initialValue: userData ? userData.lastName : "",
+              })}
             />
           </Grid.Col>
           <Grid.Col span={4}>
@@ -177,7 +228,10 @@ const AddUserForm = () => {
               withAsterisk
               placeholder="eisha@gmail.com"
               required
-              {...form.getInputProps("email")}
+              // {...form.getInputProps("email")}
+              {...form.getInputProps("email", {
+                initialValue: userData ? userData.email : "",
+              })}
             />
           </Grid.Col>
           <Grid.Col span={4}>
@@ -185,7 +239,10 @@ const AddUserForm = () => {
               label="Password"
               withAsterisk
               placeholder="abc123"
-              {...form.getInputProps("password")}
+              // {...form.getInputProps("password")}
+              {...form.getInputProps("password", {
+                initialValue: userData ? userData.password : "",
+              })}
             />
           </Grid.Col>
           <Grid.Col span={4}>
@@ -193,7 +250,10 @@ const AddUserForm = () => {
               label="Confirm Password"
               withAsterisk
               placeholder="abc123"
-              {...form.getInputProps("ConfirmPassword")}
+              // {...form.getInputProps("ConfirmPassword")}
+              {...form.getInputProps("ConfirmPassword", {
+                initialValue: userData ? userData.ConfirmPassword : "",
+              })}
             />
           </Grid.Col>
           <Grid.Col span={4}>
@@ -201,7 +261,10 @@ const AddUserForm = () => {
               label="Cell Number"
               withAsterisk
               placeholder="0300-1234561"
-              {...form.getInputProps("CellNumber")}
+              // {...form.getInputProps("CellNumber")}
+              {...form.getInputProps("CellNumber", {
+                initialValue: userData ? userData.CellNumber : "",
+              })}
             />
           </Grid.Col>
           <Grid.Col span={4}>
@@ -216,7 +279,10 @@ const AddUserForm = () => {
                 { value: "California", label: "California" },
                 { value: "Conneticut", label: "Conneticut" },
               ]}
-              {...form.getInputProps("StateLocation")}
+              // {...form.getInputProps("StateLocation")}
+              {...form.getInputProps("StateLocation", {
+                initialValue: userData ? userData.StateLocation : "",
+              })}
             />
           </Grid.Col>
           <Grid.Col span={4}>
@@ -224,7 +290,10 @@ const AddUserForm = () => {
               label="Zip Code"
               withAsterisk
               placeholder="12345"
-              {...form.getInputProps("ZipCode")}
+              // {...form.getInputProps("ZipCode")}
+              {...form.getInputProps("ZipCode", {
+                initialValue: userData ? userData.ZipCode : "",
+              })}
             />
           </Grid.Col>
           <Group position="center">

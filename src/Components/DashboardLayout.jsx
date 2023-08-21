@@ -45,7 +45,7 @@ import {
   MessageCircle,
   MessageReport,
   UserPlus,
-  
+  ShoppingCartPlus,
   // Users as ViewUser,
 } from "tabler-icons-react";
 
@@ -83,6 +83,22 @@ const navbarLinks = [
   {
     label: "Vehicle",
     icon: <Car size={48} strokeWidth={2} color={"white"} />,
+    children: [
+      {
+        label: "Add Vehicle",
+        icon: <ShoppingCartPlus   
+        size={48}
+        strokeWidth={2}
+        color={'white'}
+      />,
+        link: "/adding-vehicle"
+      },
+      {
+        label: "View Vehicle",
+        icon: <Car size={48} strokeWidth={2} color={"white"} />,
+        link:"/view-vehicle"
+      },
+    ],
   },
   {
     label: "View Service",

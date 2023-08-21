@@ -17,7 +17,11 @@ import { Data } from "../utils/Data";
 import AddUserForm from "./Components/AddUser";
 import ViewUser from "./Components/ViewUser";
 import Dashboard from "./Components/Dashboard";
+import AddingVehicle from "./Components/AddingVehicle";
+import { Toaster } from "react-hot-toast";
+import ViewVehicle from "./Components/viewVehicle";
 Chart.register(CategoryScale);
+
 // import {BarChart} from "../utils/BarChart";
 
 function App() {
@@ -40,26 +44,34 @@ function App() {
     ],
   });
   return (
-    <Routes>
-      <Route path="/" element={<DashboardLayout />}>
-        {/* <Route index element={<Dashboard />} /> */}
-        <Route path="/dash-board" element={<Dashboard/>}/>
-        <Route path="add-user" element={<AddUserForm />} />
-        <Route path="view-user" element={<ViewUser />} />
-      </Route>
-      <Route path="/sign-up" element={<Signup />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/add-vehicle" element={<AddVehicle />} />
-      <Route path="/forget-password" element={<ForgetPassword />} />
-      <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/user-profile" element={<UserProfile />} />
-      <Route path="/edit-profile" element={<EditProfile />} />
-      <Route path="/change-password" element={<ChangePassword />} />
-      <Route path="/get-profile" element={<GetProfile />} />
-      <Route path="/update-profile" element={<UpdateProfile />} />
-      <Route path="*" element={<h1>404 Not Found</h1>} />
-    </Routes>
-    // <BarChart chartData={chartData} />
+    <>
+      <Toaster />
+      <Routes>
+        <Route path="/" element={<DashboardLayout />}>
+          {/* <Route index element={<Dashboard />} /> */}
+          <Route path="/dash-board" element={<Dashboard />} />
+          <Route path="add-user/:id" element={<AddUserForm />} />
+          <Route path="/adding-vehicle/:id" element={<AddingVehicle/>}/>
+          <Route path="/view-vehicle" element={<ViewVehicle/>}/>
+
+          {/* <Route path="add-user" element={<AddUserForm />} /> */}
+          <Route path="view-user" element={<ViewUser />} />
+        </Route>
+        <Route path="/sign-up" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/add-vehicle" element={<AddVehicle />} />
+        <Route path="/forget-password" element={<ForgetPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/user-profile" element={<UserProfile />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
+        <Route path="/change-password" element={<ChangePassword />} />
+        <Route path="/get-profile" element={<GetProfile />} />
+        <Route path="/update-profile" element={<UpdateProfile />} />
+        
+        <Route path="*" element={<h1>404 Not Found</h1>} />
+      </Routes>
+      {/* // <BarChart chartData={chartData} /> */}
+    </>
   );
 }
 export default App;
