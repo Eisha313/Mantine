@@ -17,16 +17,16 @@ import { Paperclip } from "tabler-icons-react";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 // import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 import axios from "axios";
-
+import {toast} from "react-hot-toast";
 const AddUserForm = () => {
   // const [userData, setUserData] = useState("");
   const theme = useMantineTheme();
   const form = useForm({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
+      firstName: editedUserData ? editedUserData.firstName : "",
+      lastName: editedUserData ? editedUserData.lastName : "",
+      email: editedUserData ? editedUserData.email : "",
+      password: editedUserData ? editedUserData.firstName : "",,
       ConfirmPassword: "",
       CellNumber: "",
       StateLocation: "",
@@ -101,6 +101,7 @@ const AddUserForm = () => {
       );
       console.log("User Data:", form.values);
       console.log("Response:", response.data);
+      toast.success("user added successfuly")
 
       form.reset();
     } catch (error) {
