@@ -20,11 +20,18 @@ import Dashboard from "./Components/Dashboard";
 import AddingVehicle from "./Components/AddingVehicle";
 import { Toaster } from "react-hot-toast";
 import ViewVehicle from "./Components/viewVehicle";
+import Chat from "./Components/Chat";
+import ChatBox from "./Components/ChatModule/ChatBox";
+import { auth } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import NavBar from "./Components/ChatModule/NavBar";
+import Welcome from "./Components/ChatModule/Welcome";
 Chart.register(CategoryScale);
 
 // import {BarChart} from "../utils/BarChart";
 
 function App() {
+  const [user] = useAuthState(auth);
   const [chartData, setChartData] = useState({
     labels: Data.map((data) => data.year),
     datasets: [
@@ -67,6 +74,11 @@ function App() {
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/get-profile" element={<GetProfile />} />
         <Route path="/update-profile" element={<UpdateProfile />} />
+        <Route path="/chat" element={<Chat/>}/>
+        <Route path="/Chat-box" element={<ChatBox/>}/>
+        <Route path="/nav-bar" element={<NavBar/>}/>
+        <Route path="/welcome" element={<Welcome/>}/>
+
         
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>

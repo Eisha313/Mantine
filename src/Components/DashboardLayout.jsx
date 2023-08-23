@@ -18,6 +18,10 @@ import PieChartComponent from "../../utils/PieChartComponent";
 import PieChartData from "../../utils/PieChartData";
 import AddUserForm from "./AddUser";
 import ViewUser from "./ViewUser";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import {  signInWithRedirect } from "firebase/auth";
 
 // import BarChart from "../utils/BarChart";
 // import {BarChart} from "../utils/BarChart";
@@ -147,7 +151,28 @@ const navbarLinks = [
     label: "Settings",
 
     icon: <Settings size={48} strokeWidth={2} color={"white"} />,
+    children: [
+      {
+        label: "Change Password",
+        icon: <ShoppingCartPlus   
+        size={48}
+        strokeWidth={2}
+        color={'white'}
+      />,
+        link: "/change-password"
+      },
+      {
+        label: "profile",
+        icon: <Car size={48} strokeWidth={2} color={"white"} />,
+        link:"/get-profile"
+      },
+    ],
   },
+  {
+    
+           
+          
+  }
 ];
 
 // const pieChartData = {
@@ -179,6 +204,15 @@ const navbarLinks = [
 
 const Dashboard = () => {
   const [opened, setOpened] = useState(false);
+  const [user] = useAuthState(auth);
+
+  const googleSignIn = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithRedirect(auth, provider);
+  };
+  const signOut = () => {
+    auth.signOut();
+  };
   const navigate=useNavigate();
   return (
     <AppShell
