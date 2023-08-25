@@ -59,7 +59,7 @@ function App() {
         <Route path="/" element={<DashboardLayout />}>
           
           <Route path="/dash-board" element={<Dashboard />} />
-          <Route path="add-user/:id" element={<AddUserForm />} />
+          <Route path="add-user" element={<AddUserForm />} />
           <Route path="/adding-vehicle/:id" element={<AddingVehicle/>}/>
           <Route path="/view-vehicle" element={<ViewVehicle/>}/>
           <Route path="/Chat-box" element={<ChatBox/>}/>

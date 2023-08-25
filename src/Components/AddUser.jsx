@@ -73,10 +73,15 @@ const AddUserForm = ({ userId, userData }) => {
   //       [name]: value,
   //     }));
   //   };
-  const { id } = useParams();
+
+  const location = useLocation();
+
+  console.log(location)
+
+  const id  = location?.state?.id ;
   const token = localStorage.getItem("jwtToken");
   useEffect(() => {
-    // Fetch user data using the userId parameter
+    
     try {
       const response = axios
         .get(`http://localhost:3000/users/${id}`, {

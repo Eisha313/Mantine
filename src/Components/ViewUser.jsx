@@ -67,7 +67,7 @@ export default function ViewUser() {
   const [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * usersPerPage;
   const endIndex = startIndex + usersPerPage;
- 
+
   const [downloadOption, setDownloadOption] = useState();
 
   const handleDownload = (option) => {
@@ -101,7 +101,6 @@ export default function ViewUser() {
     );
   };
   const ActionsColumn = ({ users }) => {
-
     const handleDelete = async () => {
       console.log("usersss", users);
       console.log(users._id, "this was userid");
@@ -120,18 +119,20 @@ export default function ViewUser() {
         console.error("Error deleting user:", error);
       }
     };
-  
-      const handleEdit = () => {
-        // navigate(`/add-user`);
-        console.log(users._id)
-        navigate(`/add-user/${users._id}`);
 
-        
-          open(); // Open the modal with AddUserForm
-          setEditedUserData(users); // Set the edited user data for pre-filling the form
-        }; // Pass user ID as a parameter to the URL
-      
-  ;
+    const handleEdit = () => {
+      // navigate(`/add-user`);
+      console.log(users._id);
+      navigate(`/add-user`,{
+        state:{
+          id: users._id
+        }
+      });
+
+      open(); // Open the modal with AddUserForm
+      setEditedUserData(users); // Set the edited user data for pre-filling the form
+    }; // Pass user ID as a parameter to the URL
+
     // console.log("hello",user)
     return (
       <Flex>
@@ -143,21 +144,21 @@ export default function ViewUser() {
             style={{ cursor: "pointer" }}
           />
         </Button>
-        <Button 
-        onClick={() => {
-          setModalData(users);
-          open();
-        }}
-        style={{ backgroundColor: "White" }}>
+        <Button
+          onClick={() => {
+            setModalData(users);
+            open();
+          }}
+          style={{ backgroundColor: "White" }}
+        >
           <Eye
             size={18}
             strokeWidth={1.5}
             color="blue"
             style={{ cursor: "pointer", marginLeft: "8px" }}
-            
           />
         </Button>
-        
+
         <Button onClick={handleEdit} style={{ backgroundColor: "white" }}>
           <Edit
             size={18}
@@ -169,11 +170,10 @@ export default function ViewUser() {
         </Button>
       </Flex>
     );
-      };
+  };
   const performDownload = () => {
     console.log("helllo");
-    
-    
+
     const pdf = new jsPDF();
 
     // Define the table content (rows) as an array of arrays
@@ -182,21 +182,13 @@ export default function ViewUser() {
       user.email,
       user.userType,
       user.Dealership,
-,
-
+      ,
       ,
     ]);
 
     // Add a header row to the table content
-    tableContent.unshift([
-      "Full Name",
-      "Email",
-      "UserType",
+    tableContent.unshift(["Full Name", "Email", "UserType"]);
 
-      
-    ]);
-
-    
     const startY = 10;
     const margin = 10;
     const pageWidth = pdf.internal.pageSize.getWidth() - 2 * margin;
@@ -251,8 +243,6 @@ export default function ViewUser() {
     setSearchTerm(event.target.value);
   };
 
-
-
   const rows = users.map((user, index) => (
     <tr key={user._id}>
       <td>{index + 1}</td>
@@ -274,18 +264,18 @@ export default function ViewUser() {
 
   console.log(rows);
   const filteredUsers = users
-  .filter((user) =>
-    user.firstName.toLowerCase().includes(searchQuery.toLowerCase())
-  )
-  .filter((user) =>
-    selectedUserType ? user.userType === selectedUserType : true
-  )
+    .filter((user) =>
+      user.firstName.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .filter((user) =>
+      selectedUserType ? user.userType === selectedUserType : true
+    );
   // .filter(
   //   (user) => (selectedStatus ? user.status === selectedStatus : true) // Apply status filter if a status is selected
   // );
   const handleSort = (column) => {
     if (sortBy === column) {
-      console.log(column)
+      console.log(column);
       setSortOrder(sortOrder === "asc" ? "desc" : "asc");
     } else {
       setSortBy(column);
@@ -310,7 +300,6 @@ export default function ViewUser() {
   const filteredAndSortedUsers = sortedUsers.filter((user) =>
     user.firstName.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  
 
   // Extract users for the current page
   const usersToShow = filteredAndSortedUsers.slice(startIndex, endIndex);
@@ -318,12 +307,10 @@ export default function ViewUser() {
   const totalPages = Math.ceil(filteredAndSortedUsers.length / usersPerPage);
   const usersOnPage = users.slice(startIndex, endIndex);
   const handlePageChange = (newPage) => {
-    console.log(newPage,"this is new")
+    console.log(newPage, "this is new");
     setCurrentPage(newPage);
-    console.log("page", startIndex, endIndex, currentPage)
+    console.log("page", startIndex, endIndex, currentPage);
   };
-
-  
 
   return (
     <>
@@ -343,13 +330,12 @@ export default function ViewUser() {
         opened={opened}
         onClose={close}
         withCloseButton={true}
-        
-        >
-           {/* {editedUserData && (
+      >
+        {/* {editedUserData && (
         <AddUserForm userId={editedUserData._id} userData={editedUserData} />
       )} */}
-      
-        <Flex  direction={"column"}>
+
+        <Flex direction={"column"}>
           <Title>User Details</Title>
           {modalData && (
             <div>
@@ -383,9 +369,10 @@ export default function ViewUser() {
           radius="sm"
         />
 
-        <Select style={{width:480}}
+        <Select
+          style={{ width: 480 }}
           //   label="Filter By User"
-          
+
           placeholder="Filter By User"
           data={[
             { value: "Admin", label: "Admin" },
@@ -393,10 +380,8 @@ export default function ViewUser() {
           ]}
           value={selectedUserType}
           // {getInputProps("userType")}
-        
-          
+
           onChange={(value) => setSelectedUserType(value)}
-          
         />
         {/* <Select
           placeholder="Filter By Status"
@@ -500,7 +485,7 @@ export default function ViewUser() {
           <thead>
             <tr>
               <th>Sr No.</th>
-              <th >Full Name</th>
+              <th>Full Name</th>
               <th>Email</th>
               <th>UserType</th>
               {/* <th>Dealership</th> */}
@@ -513,12 +498,12 @@ export default function ViewUser() {
           {/* <tbody>{rows}</tbody> */}
           <tbody>
             {/* {filteredUsers.map((user, index) => ( */}
-                {/* {filteredAndSortedUsers.map((user,index) => ( 
+            {/* {filteredAndSortedUsers.map((user,index) => ( 
                     
                        {/* {usersOnPage.map((user,index) => ( */}
-                       
-                       {/* {filteredAndSortedUsers.map((user,index) => (  */}
-                       {usersToShow.map((user, index) => ( 
+
+            {/* {filteredAndSortedUsers.map((user,index) => (  */}
+            {usersToShow.map((user, index) => (
               <tr key={user._id}>
                 <td>{index + 1}</td>
                 <td>{user.firstName + " " + user.lastName}</td>
@@ -556,7 +541,7 @@ export default function ViewUser() {
           dotsIcon={IconGripHorizontal}
           value={currentPage} // Set the current page
           onChange={setCurrentPage}
-          // onPageChange={handlePageChange} 
+          // onPageChange={handlePageChange}
         />
       </div>
     </>
