@@ -50,6 +50,7 @@ import {
   MessageReport,
   UserPlus,
   ShoppingCartPlus,
+  HomeQuestion,
   // Users as ViewUser,
 } from "tabler-icons-react";
 
@@ -148,13 +149,14 @@ const navbarLinks = [
     icon: <MoodAngry size={40} strokeWidth={2} color={"white"} />,
   },
   {
-    label: "Settings",
+    label:"Settings",
+    icon: <Settings size={40} strokeWidth={2} color={"white"} />,
+    
 
-    icon: <Settings size={48} strokeWidth={2} color={"white"} />,
     children: [
       {
         label: "Change Password",
-        icon: <ShoppingCartPlus   
+        icon: < Tool 
         size={48}
         strokeWidth={2}
         color={'white'}
@@ -163,15 +165,31 @@ const navbarLinks = [
       },
       {
         label: "profile",
-        icon: <Car size={48} strokeWidth={2} color={"white"} />,
+        icon: <Users size={48} strokeWidth={2} color={"white"} />,
         link:"/get-profile"
       },
     ],
   },
   {
     
-           
+    label:"Chat" ,
+    icon:  <MessageCircle
+    size={48}
+    strokeWidth={2}
+    color={'white'}
+  />,
+    link:"/welcome",
           
+  },
+  {
+label:"About Us",
+icon: <HomeQuestion
+size={40}
+strokeWidth={2}
+color={'White'}
+/>,
+link:"/about-us"
+
   }
 ];
 

@@ -26,6 +26,8 @@ import { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import NavBar from "./Components/ChatModule/NavBar";
 import Welcome from "./Components/ChatModule/Welcome";
+import Phone from "./Components/ChatModule/phone";
+import AboutUs from "./Components/AboutUs";
 Chart.register(CategoryScale);
 
 // import {BarChart} from "../utils/BarChart";
@@ -55,11 +57,14 @@ function App() {
       <Toaster />
       <Routes>
         <Route path="/" element={<DashboardLayout />}>
-          {/* <Route index element={<Dashboard />} /> */}
+          
           <Route path="/dash-board" element={<Dashboard />} />
           <Route path="add-user/:id" element={<AddUserForm />} />
           <Route path="/adding-vehicle/:id" element={<AddingVehicle/>}/>
           <Route path="/view-vehicle" element={<ViewVehicle/>}/>
+          <Route path="/Chat-box" element={<ChatBox/>}/>
+          <Route path="/phone" element={<Phone/>}/>
+          <Route path="/about-us" element={<AboutUs/>}/>
 
           {/* <Route path="add-user" element={<AddUserForm />} /> */}
           <Route path="view-user" element={<ViewUser />} />
@@ -75,7 +80,7 @@ function App() {
         <Route path="/get-profile" element={<GetProfile />} />
         <Route path="/update-profile" element={<UpdateProfile />} />
         <Route path="/chat" element={<Chat/>}/>
-        <Route path="/Chat-box" element={<ChatBox/>}/>
+        
         <Route path="/nav-bar" element={<NavBar/>}/>
         <Route path="/welcome" element={<Welcome/>}/>
 

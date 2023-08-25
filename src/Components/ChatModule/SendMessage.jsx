@@ -24,13 +24,13 @@ const SendMessage = () => {
     };
       
     return (
-      <form style={{marginLeft:"300px"}} onSubmit={(event) => sendMessage(event)} className="send-message">
-        <input
+      <form style={{marginLeft:"300px",marginTop:"20px"}} onSubmit={(event) => sendMessage(event)} className="send-message">
+        <input style={{border:"1px solid orange" ,justifyContent:"center",alignItems:"center"}}
           placeholder="Type your text here"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <button  style={{color:"white",backgroundColor:"blue"}}type="submit">Send</button>
+        <button  style={{color:"white",backgroundColor:"Darkorange",marginLeft:"20px",height:"40px",marginTop:"20px",fontStyle:"bold"}}type="submit">Send</button>
       </form>
     );
   };
