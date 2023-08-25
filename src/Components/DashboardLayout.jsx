@@ -12,7 +12,8 @@ import {
   Group,
   SimpleGrid,
   Menu,
-  Divider,ScrollArea
+  Divider,
+  ScrollArea,
 } from "@mantine/core";
 import PieChartComponent from "../../utils/PieChartComponent";
 import PieChartData from "../../utils/PieChartData";
@@ -21,7 +22,7 @@ import ViewUser from "./ViewUser";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import {  signInWithRedirect } from "firebase/auth";
+import { signInWithRedirect } from "firebase/auth";
 
 // import BarChart from "../utils/BarChart";
 // import {BarChart} from "../utils/BarChart";
@@ -56,13 +57,13 @@ import {
 
 import "./db.css";
 import DashboardStat from "./DashboardStat";
-import { Outlet, useNavigate ,Link} from "react-router-dom";
-
+import { Outlet, useNavigate, Link } from "react-router-dom";
 
 const navbarLinks = [
   {
     label: "Dashboard",
     icon: <LayoutDashboard size={32} strokeWidth={2} color={"white"} />,
+    link:"dash-board"
   },
   {
     label: "User Management",
@@ -71,12 +72,12 @@ const navbarLinks = [
       {
         label: "Add User",
         icon: <UserPlus size={20} strokeWidth={2} color="white" />,
-        link: "/add-user"
+        link: "/add-user",
       },
       {
         label: "View User",
         icon: <Users size={48} strokeWidth={2} color={"white"} />,
-        link:"/view-user"
+        link: "/view-user",
       },
     ],
   },
@@ -91,17 +92,13 @@ const navbarLinks = [
     children: [
       {
         label: "Add Vehicle",
-        icon: <ShoppingCartPlus   
-        size={48}
-        strokeWidth={2}
-        color={'white'}
-      />,
-        link: "/adding-vehicle"
+        icon: <ShoppingCartPlus size={48} strokeWidth={2} color={"white"} />,
+        link: "/adding-vehicle",
       },
       {
         label: "View Vehicle",
         icon: <Car size={48} strokeWidth={2} color={"white"} />,
-        link:"/view-vehicle"
+        link: "/view-vehicle",
       },
     ],
   },
@@ -149,48 +146,36 @@ const navbarLinks = [
     icon: <MoodAngry size={40} strokeWidth={2} color={"white"} />,
   },
   {
-    label:"Settings",
+    label: "Settings",
     icon: <Settings size={40} strokeWidth={2} color={"white"} />,
-    
 
     children: [
       {
         label: "Change Password",
-        icon: < Tool 
-        size={48}
-        strokeWidth={2}
-        color={'white'}
-      />,
-        link: "/change-password"
+        icon: <Tool size={48} strokeWidth={2} color={"white"} />,
+        link: "/change-password",
       },
       {
         label: "profile",
         icon: <Users size={48} strokeWidth={2} color={"white"} />,
-        link:"/get-profile"
+        link: "/get-profile",
       },
     ],
   },
   {
-    
-    label:"Chat" ,
-    icon:  <MessageCircle
-    size={48}
-    strokeWidth={2}
-    color={'white'}
-  />,
-    link:"/welcome",
-          
+    label: "Chat",
+    icon: <MessageCircle size={48} strokeWidth={2} color={"white"} />,
+    link: "/Chat-box",
+    // link: "welcome",
+    // href:"welcome"
   },
-  {
-label:"About Us",
-icon: <HomeQuestion
-size={40}
-strokeWidth={2}
-color={'White'}
-/>,
-link:"/about-us"
 
-  }
+  {
+    label: "About Us",
+    icon: <HomeQuestion size={40} strokeWidth={2} color={"White"} />,
+    link: "/about-us",
+    // navigate:("/about-us")
+  },
 ];
 
 // const pieChartData = {
@@ -231,7 +216,7 @@ const Dashboard = () => {
   const signOut = () => {
     auth.signOut();
   };
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   return (
     <AppShell
       padding="md"
@@ -244,61 +229,63 @@ const Dashboard = () => {
           width={{ sm: 200, lg: 300 }}
           style={{ overflowY: "auto" }}
           bg={"black"}
-        >  
-          {navbarLinks.map((link, index) => (
-            <NavLink 
-           
-            label={`${index + 1}. ${link.label}`}
-            // onClick={() => {
-            //   if (link.label === "2.1 Add User") {
-            //     <Link to="/add-user"></Link> 
-            //     // navigate("/add-user");
-            //   } else if (link.label === "2.2 View User") {
-            //     // navigate("/view-user");
-            //     <Link to="/view-user"></Link> 
-            //   }
-            // }}
-            icon={link.icon} 
-            childrenOffset={28}   styles={{
-              label: {
-                color: "white",
-              },
-              icon: {
-                height: 30,
-                width: 30,
-              },
-              root: {
-                ":hover": {
-                  background: "#444",
-                },
-              },
-            }}
-          
         >
-              
+          {navbarLinks.map((link, index) => (
+            <NavLink
+              label={`${index + 1}. ${link.label}`}
+              // onClick={() => {
+              //   if (link.label === "2.1 Add User") {
+              //     <Link to="/add-user"></Link>
+              //     // navigate("/add-user");
+              //   } else if (link.label === "2.2 View User") {
+              //     // navigate("/view-user");
+              //     <Link to="/view-user"></Link>
+              //   }
+              // }}
+              onClick={() => {
+                link?.link && navigate(link.link);
+              }}
+              icon={link.icon}
+              childrenOffset={28}
+              styles={{
+                label: {
+                  color: "white",
+                },
+                icon: {
+                  height: 30,
+                  width: 30,
+                },
+                root: {
+                  ":hover": {
+                    background: "#444",
+                  },
+                },
+              }}
+            >
               {link.children &&
                 link.children.map((childLink, childIndex) => (
-                  <NavLink 
-                  label={`${index + 1}.${childIndex + 1} ${childLink.label}`}
-                  onClick={() => {
-                      childLink?.link && navigate(childLink.link)
-                  }}
-                   icon={childLink.icon}  styles={{
-                    label: {
-                      color: "white",
-                    },
-                    icon: {
-                      height: 30,
-                      width: 30,
-                    },
-                    root: {
-                      ":hover": {
-                        background: "#444",
+                  <NavLink
+                    label={`${index + 1}.${childIndex + 1} ${childLink.label}`}
+                    onClick={() => {
+                      childLink?.link && navigate(childLink.link);
+                    }}
+                    icon={childLink.icon}
+                    styles={{
+                      label: {
+                        color: "white",
                       },
-                    },
-                  }}/>
+                      icon: {
+                        height: 30,
+                        width: 30,
+                      },
+                      root: {
+                        ":hover": {
+                          background: "#444",
+                        },
+                      },
+                    }}
+                  />
                 ))}
-                
             </NavLink>
           ))}
         </Navbar>
@@ -314,7 +301,8 @@ const Dashboard = () => {
           }}
         >
           <Flex justify={"space-between"} w={"100%"} px={20} py={10}>
-            <Group spacing={"md"}>a
+            <Group spacing={"md"}>
+              a
               <Flex align={"center"}>
                 <Phone size={36} strokeWidth={2} color={"white"} />
                 <Text color="white">+1(240)307-3416</Text>
@@ -347,7 +335,7 @@ const Dashboard = () => {
         <Flex align={"center"}></Flex>
         <Text>Contact us today</Text>
       </Footer>
-      <Outlet/>
+      <Outlet />
 
       {/* Pie Charts */}
       {/* <Flex justifyContent="space-between" mt="md">
