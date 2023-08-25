@@ -59,7 +59,7 @@ const AddingVehicle = (vehicleId,vehicleData) => {
   
 
  
-  const { id } = useParams();
+  const id = location?.state?.id;
   const token = localStorage.getItem("jwtToken");
   useEffect(() => {
     

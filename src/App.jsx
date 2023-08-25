@@ -60,7 +60,7 @@ function App() {
           
           <Route path="/dash-board" element={<Dashboard />} />
           <Route path="add-user" element={<AddUserForm />} />
-          <Route path="/adding-vehicle/:id" element={<AddingVehicle/>}/>
+          <Route path="/adding-vehicle" element={<AddingVehicle/>}/>
           <Route path="/view-vehicle" element={<ViewVehicle/>}/>
           <Route path="/Chat-box" element={<ChatBox/>}/>
           <Route path="/phone" element={<Phone/>}/>

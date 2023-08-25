@@ -124,7 +124,10 @@ import {
         const handleEdit = () => {
           // navigate(`/add-user`);
           console.log(vehicles._id)
-          navigate(`/adding-vehicle/${vehicles._id}`);
+          navigate(`/adding-vehicle`,{state:{
+            id:vehicles._id
+          }})
+          // /${vehicles._id}`);
   
           
             open(); 
