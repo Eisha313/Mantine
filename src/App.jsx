@@ -28,6 +28,7 @@ import NavBar from "./Components/ChatModule/NavBar";
 import Welcome from "./Components/ChatModule/Welcome";
 import Phone from "./Components/ChatModule/phone";
 import AboutUs from "./Components/AboutUs";
+import Reactrender from "./Components/Reactrender";
 Chart.register(CategoryScale);
 
 // import {BarChart} from "../utils/BarChart";
@@ -65,6 +66,7 @@ function App() {
           <Route path="/Chat-box" element={<ChatBox/>}/>
           <Route path="/phone" element={<Phone/>}/>
           <Route path="/about-us" element={<AboutUs/>}/>
+          <Route path="react-render" element={<Reactrender/>}/>
 
           {/* <Route path="add-user" element={<AddUserForm />} /> */}
           <Route path="view-user" element={<ViewUser />} />
