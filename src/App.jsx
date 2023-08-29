@@ -29,6 +29,7 @@ import Welcome from "./Components/ChatModule/Welcome";
 import Phone from "./Components/ChatModule/phone";
 import AboutUs from "./Components/AboutUs";
 import Reactrender from "./Components/Reactrender";
+// import PhoneSignUp from "./Components/phoneSignup";
 Chart.register(CategoryScale);
 
 // import {BarChart} from "../utils/BarChart";
@@ -67,6 +68,7 @@ function App() {
           <Route path="/phone" element={<Phone/>}/>
           <Route path="/about-us" element={<AboutUs/>}/>
           <Route path="react-render" element={<Reactrender/>}/>
+          {/* <Route path="phone-sign" element={<PhoneSignUp/>}/> */}
 
           {/* <Route path="add-user" element={<AddUserForm />} /> */}
           <Route path="view-user" element={<ViewUser />} />

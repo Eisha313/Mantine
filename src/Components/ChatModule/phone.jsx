@@ -32,7 +32,7 @@ const Phone = () => {
     }
     try {
       const response = await setUpRecaptcha(number);
-      console.log(response);
+      console.log("response", response);
       setConfirmObj(response);
       setFlag(true);
     } catch (err) {
@@ -42,18 +42,22 @@ const Phone = () => {
 
   const setUpRecaptcha = (number) => {
     console.log("In Recaptcha");
-
     try {
-      const reCaptchaVerifier = new RecaptchaVerifier(
+      window.reCaptchaVerifier = new RecaptchaVerifier(
+        auth,
         "recaptcha-container",
-        {},
-        auth
+        {}
       );
-      reCaptchaVerifier.render();
+      // window.reCaptchaVerifier.render().then((widgetId) => {
+      //   window.recaptchaWidgetId = widgetId;
+      // });
+      // const recaptchaResponse = grecaptcha.getResponse(recaptchaWidgetId);
+      const appVerifier = window.reCaptchaVerifier;
+      console.log("appVerifier", appVerifier)
+      return signInWithPhoneNumber(auth, number, appVerifier);
     } catch (err) {
       console.log(err);
     }
-    return signInWithPhoneNumber(auth, number,reCaptchaVerifier,);
   };
 
   const phoneSignIn = () => {
@@ -63,7 +67,7 @@ const Phone = () => {
   const [otp, setOtp] = useState("");
   const verifyOtp = async (e) => {
     //   e.preventDefault()
-    if (opt === "" || opt === null) return;
+    if (otp === "" || otp === null) return;
     try {
       await confirmObj.confirm(otp);
       navigate("/dash-board");
@@ -74,9 +78,10 @@ const Phone = () => {
   return (
     <div>
       <form
-        onSubmit={form.onSubmit(getOtp)}
+        onSubmit={form.onSubmit((val) => getOtp())}
         style={{ display: !flag ? "block" : "none" }}
       >
+
         <PhoneInput
           defaultCountry="Pakistan"
           onChange={setNumber}
@@ -93,7 +98,7 @@ const Phone = () => {
       </form>
       <form
         onSubmit={form.onSubmit(verifyOtp)}
-        style={{ display: !flag ? "block" : "none" }}
+        style={{ display: flag ? "block" : "none" }}
       >
         <TextInput
           placeholder="enter your otp"
