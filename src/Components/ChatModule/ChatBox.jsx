@@ -44,7 +44,7 @@ const ChatBox = () => {
     <>
     <main
       style={{
-        color: "brown",
+        // color: "brown",
         color: "black",
         marginTop: "2px",
         fontStyle: "bold",

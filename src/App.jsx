@@ -29,6 +29,11 @@ import Welcome from "./Components/ChatModule/Welcome";
 import Phone from "./Components/ChatModule/phone";
 import AboutUs from "./Components/AboutUs";
 import Reactrender from "./Components/Reactrender";
+import Reactrenderr from "./Components/Reactrenderr";
+import EmailSignup from "./Components/ChatModule/email";
+import Reactrenderrr from "./Components/react-renderrr";
+import VerifyOTP from "./Components/ChatModule/VerifyOtp";
+import ConvertedContentPage from "./Components/ConvertedPage";
 // import PhoneSignUp from "./Components/phoneSignup";
 Chart.register(CategoryScale);
 
@@ -66,8 +71,15 @@ function App() {
           <Route path="/view-vehicle" element={<ViewVehicle/>}/>
           <Route path="/Chat-box" element={<ChatBox/>}/>
           <Route path="/phone" element={<Phone/>}/>
+          <Route path="/email" element={<EmailSignup/>}/>
           <Route path="/about-us" element={<AboutUs/>}/>
           <Route path="react-render" element={<Reactrender/>}/>
+          <Route path="react-renderr" element={<Reactrenderr/>}/>
+          <Route path="react-renderrr" element={<Reactrenderrr/>}/>
+          <Route path="/verify-otp" element={<VerifyOTP/>}/>
+          <Route path="converted" element={<ConvertedContentPage/>}/>
+          
+          
           {/* <Route path="phone-sign" element={<PhoneSignUp/>}/> */}
 
           {/* <Route path="add-user" element={<AddUserForm />} /> */}
