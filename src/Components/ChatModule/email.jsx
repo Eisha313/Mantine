@@ -68,12 +68,13 @@ const EmailSignup = () => {
         navigate("/dash-board");
       }, 10000); 
 
-      return () => clearTimeout(navigationTimeout); // Clear the timeout if component unmounts
+      return () => clearTimeout(navigationTimeout); 
     }
   }, [emailVerified, navigate]);
   
 
   // Add a condition for navigation based on email verification status
+
   if (emailVerified) {
     return <div>Redirecting to dashboard...</div>;
   }
