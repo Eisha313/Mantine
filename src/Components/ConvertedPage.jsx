@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 // import firebase from "firebase/app";
 // // import "firebase/firestore";
+import { auth } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const ConvertedContentPage = () => {
   const [convertedContent, setConvertedContent] = useState("");
@@ -14,10 +16,9 @@ const ConvertedContentPage = () => {
         const snapshot = await convertedTextsRef.get();
 
         if (!snapshot.empty) {
-          // Loop through snapshot.docs if you have multiple documents
+         
           const documentsData = snapshot.docs.map(doc => doc.data());
-          // Assuming you want to display the content of the first document
-          const firstDocumentData = documentsData[0];
+             const firstDocumentData = documentsData[0];
           setConvertedContent(firstDocumentData.content);
         }
       } catch (error) {

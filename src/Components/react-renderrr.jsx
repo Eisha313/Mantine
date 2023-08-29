@@ -9,8 +9,10 @@ import TextAlign from "@tiptap/extension-text-align";
 import Superscript from "@tiptap/extension-superscript";
 import SubScript from "@tiptap/extension-subscript";
 import ConvertedContentPage from "./ConvertedPage";
-import { auth } from "../../firebase";
+
+import { addDoc, collection } from "firebase/firestore"; // Import Firestore functions
 import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db } from "../firebase";
 
 
 
@@ -139,7 +141,7 @@ const DisplayConvertedHTML = ({ convertedHTML }) => {
     return (
       <div>
         <TextEditor onConvert={handleConvert} />
-        <ContentPage convertedHTML={convertedHTML} />
+        <ConvertedContentPage convertedHTML={convertedHTML} />
       </div>
     );
   }

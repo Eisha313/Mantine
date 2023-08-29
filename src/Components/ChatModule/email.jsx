@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import {
   Text,
   Flex,
@@ -8,7 +8,7 @@ import {
   Group,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { auth } from "../../firebase"; // Make sure to import your Firebase configuration
+import { auth } from "../../firebase"; 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -24,6 +24,7 @@ const EmailSignup = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [emailVerified, setEmailVerified] = useState(false);
   const [user] = useAuthState(auth);
   const form = useForm({
     initialValues: {
@@ -45,7 +46,7 @@ const EmailSignup = () => {
           sendEmailVerification(userCredential.user);
           auth.signOut();
           alert("Email sent");
-          navigate("/verify-otp");
+          navigate("/dash-board");
         })
         .catch((error) => {
           setError(error.message);
@@ -54,6 +55,28 @@ const EmailSignup = () => {
       setError(err.message);
     }
   };
+  useEffect(() => {
+    if (user && user.emailVerified) {
+      setEmailVerified(true);
+    }
+  }, [user]);
+
+  useEffect(() => {
+
+    if (emailVerified) {
+      const navigationTimeout = setTimeout(() => {
+        navigate("/dash-board");
+      }, 10000); 
+
+      return () => clearTimeout(navigationTimeout); // Clear the timeout if component unmounts
+    }
+  }, [emailVerified, navigate]);
+  
+
+  // Add a condition for navigation based on email verification status
+  if (emailVerified) {
+    return <div>Redirecting to dashboard...</div>;
+  }
 
   return (
     <>
