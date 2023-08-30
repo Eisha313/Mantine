@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useParams } from "react-router-dom";
-import { Title,Text } from "@mantine/core";
+import { Title,Text ,Flex} from "@mantine/core";
 
 const BlogDetail = ({ match }) => {
   const [blogData, setBlogData] = useState({});
@@ -35,11 +35,12 @@ const BlogDetail = ({ match }) => {
 
   return (
     <div>
-      <Title>Title:{blogData.title}</Title>
+      <Title style={{marginLeft:"400px"}}>{blogData.title}</Title>
+      <Flex style={{gap:"700px"}}>
       <Text>Author: {blogData.author}</Text>
-      <Text>Date: {blogData.date}</Text>
-      {/* <Text>{blogData.content}</Text> */}
-      <div dangerouslySetInnerHTML={{ __html: blogData.content }} />
+      <Text>Date: {blogData.date}</Text></Flex>
+    
+      <div style={{height:"auto",width:"600px",border:"1px solid orange",padding:"20px",margin:"auto",marginTop:"50px"}} dangerouslySetInnerHTML={{ __html: blogData.content }} />
     </div>
   );
 };

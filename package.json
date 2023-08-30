@@ -24,6 +24,7 @@
     "@mantine/spotlight": "^6.0.17",
     "@mantine/tiptap": "^6.0.19",
     "@react-oauth/google": "^0.11.1",
+    "@react-pdf/renderer": "^3.1.12",
     "@tabler/icons-react": "^2.32.0",
     "@tiptap/extension-highlight": "^2.1.7",
     "@tiptap/extension-link": "^2.1.7",

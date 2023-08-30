@@ -1,77 +1,4 @@
 
-// import { useEffect, useState } from "react";
-// import { collection, getDocs } from "firebase/firestore";
-// import { db } from "../firebase";
-
-// const  ConvertedContentPage =() => {
-//   const [htmlContents, setHtmlContents] = useState([]);
-
-//   useEffect(() => {
-//     const fetchHtmlContents = async () => {
-//       const querySnapshot = await getDocs(collection(db, "htmlContents"));
-//       const contents = [];
-//       querySnapshot.forEach((doc) => {
-//         contents.push({ id: doc.id, ...doc.data() });
-//       });
-//       setHtmlContents(contents);
-//     };
-//     fetchHtmlContents();
-//   }, []);
-
-//   return (
-//     <div>
-//       {htmlContents.map((content) => (
-//         <div key={content.id} dangerouslySetInnerHTML={{ __html: content.content }} />
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default ConvertedContentPage;
-
-
-
-
-
-
-
-
-
-
-// import React, { useEffect, useState } from "react";
-// import { collection, getDocs } from "firebase/firestore";
-// import { db } from "../firebase";
-// import { Link } from "react-router-dom";
-
-// const BlogList = () => {
-//   const [blogPosts, setBlogPosts] = useState([]);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const querySnapshot = await getDocs(collection(db, "htmlContents"));
-//       const posts = querySnapshot.docs.map((doc) => ({
-//         id: doc.id,
-//         title: doc.data().title,
-//       }));
-//       setBlogPosts(posts);
-//     };
-
-//     fetchData();
-//   }, []);
-
-//   return (
-//     <div>
-//       {blogPosts.map((post) => (
-//         <div key={post.id}>
-//           <Link to={`/blog-detail/${post.id}`}>{post.title}</Link>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default BlogList;
-
 
 import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
@@ -98,17 +25,17 @@ const BlogTable = () => {
   }, []);
 
   return (
-    <table>
+    <table style={{ marginLeft: "auto",marginTop:"150px", marginRight: "auto", border: "1px solid orange", width: "80%", textAlign: "center"}}>
       <thead>
-        <tr>
+        <tr >
           <th>Title</th>
           <th>Author</th>
           <th>Date</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody style={{marginLeft:"50px"}}>
         {blogPosts.map((post) => (
-          <tr key={post.id}>
+          <tr key={post.id} >
             <td>
               <Link to={`/blog/${post.id}`}>{post.title}</Link>
             </td>

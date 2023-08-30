@@ -36,6 +36,7 @@ import VerifyOTP from "./Components/ChatModule/VerifyOtp";
 import ConvertedContentPage from "./Components/ConvertedPage";
 import BlogTable from "./Components/ConvertedPage";
 import BlogDetail from "./Components/BlogDetail";
+import AddUserFormm from "./Components/PDFconversion";
 
 // import PhoneSignUp from "./Components/phoneSignup";
 Chart.register(CategoryScale);
@@ -82,6 +83,7 @@ function App() {
           <Route path="/verify-otp" element={<VerifyOTP/>}/>
           <Route path="converted" element={<BlogTable/>}/>
           <Route path="/blog/:id" element={<BlogDetail/>}/>
+          <Route path="pdf-conversion" element={<AddUserFormm/>}/>
           
           
           
