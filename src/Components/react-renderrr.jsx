@@ -10,60 +10,60 @@ import Superscript from "@tiptap/extension-superscript";
 import SubScript from "@tiptap/extension-subscript";
 import ConvertedContentPage from "./ConvertedPage";
 
-import { addDoc, collection } from "firebase/firestore"; // Import Firestore functions
+import { serverTimestamp } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore"; 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../firebase";
+import { Button ,TextInput,Text} from "@mantine/core";
+import { DateInput } from "@mantine/dates";
 
 
 
-// const firebaseConfig = {
-//     apiKey: "AIzaSyCDhiWH4gwD92KS7GIzR9EZ-OFJYaZ0WZ8",
-//     authDomain: "usquareproject.firebaseapp.com",
-//     projectId: "usquareproject",
-//     storageBucket: "usquareproject.appspot.com",
-//     messagingSenderId: "725696446880",
-//     appId: "1:725696446880:web:2151961cb65d0edc6de4c5",
-//     measurementId: "G-BQ8NHDKP2D"
-//   };
-//   firebase.initializeApp(firebaseConfig);
-  
-//   const db = firebase.firestore();
+
 
 const TextEditor = ({ onConvert }) => {
     const [inputContent, setInputContent] = useState("");
+    const [user] = useAuthState(auth);
+    
+  const [author, setAuthor] = useState("");
+  const [title, setTitle] = useState("");
+
+  const [date, setDate] =useState(new Date());;
+  const [pictureLink, setPictureLink] = useState("");
+ 
   
     const handleEditorChange = (content) => {
       setInputContent(content);
     };
   
     const handleConvert = async() => {
-    //     const { uid, displayName, photoURL } = auth.currentUser;
-    //   await addDoc(collection(db, "messages"), {
-    //     text: message,
-    //     name: displayName,
-    //     avatar: photoURL,
-    //     createdAt: serverTimestamp(),
-    //     uid,
-    //   });
-    //   setMessage("");
-    // };
-      // Convert the Tiptap content to plain HTML
       const plainHtml = editor.getHTML();
-      onConvert(plainHtml);
+    
+      
       try {
-        
-        // await db.collection('convertedTexts').add({
-            await addDoc(collection(db,"messages"),{
+        const docRef = await addDoc(collection(db, "htmlContents"), {
           content: plainHtml,
-          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          title: title,     
+      author: author,     
+      date: date,  
+          createdAt: serverTimestamp(),
         });
-  
+        console.log("Document written with ID: ", docRef.id);
         
-      } catch (error) {
-        console.error('Error saving to Firebase:', error);
+        setTitle("");
+        setAuthor("");
+        setDate("");
+        setPictureLink("")
+        setInputContent("");
+}
+       catch (error) {
+        console.error("Error adding document: ", error);
       }
     };
-    ;
+   
+     
+    
+    
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -78,6 +78,29 @@ const TextEditor = ({ onConvert }) => {
   });
   return (
     <div>
+      <div>
+        <TextInput
+          placeholder="Author Name"
+          value={author}
+          onChange={(event) => setAuthor(event.target.value)}
+        />
+        <TextInput
+          placeholder="Blog Title"
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+        />
+        <DateInput
+          placeholder="Date"
+          value={date}
+          onChange={(selectedDate) => setDate(selectedDate)}
+        />
+        <TextInput
+          placeholder="Picture Link"
+          value={pictureLink}
+          onChange={(event) => setPictureLink(event.target.value)}
+        />
+      </div>
+      <Text style={{fontStyle:"italic",fontSize:"20px",fontWeight:"bold",marginLeft:"200px"}}>You can start your blog now</Text>
       <RichTextEditor editor={editor}>
         <RichTextEditor.Toolbar sticky stickyOffset={60}>
           <RichTextEditor.ControlsGroup>
@@ -122,7 +145,8 @@ const TextEditor = ({ onConvert }) => {
         <RichTextEditor.Content />
       </RichTextEditor>
 
-      <Link to="/converted">  <button onClick={handleConvert}>submit</button></Link>
+      {/* <Link to="/converted">  <button onClick={handleConvert}>submit</button></Link> */}
+      <Button onClick={handleConvert}>Submit</Button>
     </div>
   );
 };
@@ -141,7 +165,7 @@ const DisplayConvertedHTML = ({ convertedHTML }) => {
     return (
       <div>
         <TextEditor onConvert={handleConvert} />
-        <ConvertedContentPage convertedHTML={convertedHTML} />
+        {/* <ConvertedContentPage convertedHTML={convertedHTML} /> */}
       </div>
     );
   }

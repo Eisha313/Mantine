@@ -34,6 +34,9 @@ import EmailSignup from "./Components/ChatModule/email";
 import Reactrenderrr from "./Components/react-renderrr";
 import VerifyOTP from "./Components/ChatModule/VerifyOtp";
 import ConvertedContentPage from "./Components/ConvertedPage";
+import BlogTable from "./Components/ConvertedPage";
+import BlogDetail from "./Components/BlogDetail";
+
 // import PhoneSignUp from "./Components/phoneSignup";
 Chart.register(CategoryScale);
 
@@ -77,7 +80,9 @@ function App() {
           <Route path="react-renderr" element={<Reactrenderr/>}/>
           <Route path="react-renderrr" element={<Reactrenderrr/>}/>
           <Route path="/verify-otp" element={<VerifyOTP/>}/>
-          <Route path="converted" element={<ConvertedContentPage/>}/>
+          <Route path="converted" element={<BlogTable/>}/>
+          <Route path="/blog/:id" element={<BlogDetail/>}/>
+          
           
           
           {/* <Route path="phone-sign" element={<PhoneSignUp/>}/> */}
