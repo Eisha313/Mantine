@@ -1,6 +1,6 @@
 import React from "react";
 import { Document, Page,  View, StyleSheet } from "@react-pdf/renderer";
-import { Text } from "@mantine/core";
+import { Text,Flex } from "@mantine/core";
 
 const styles = StyleSheet.create({
   page: {
@@ -36,21 +36,25 @@ const styles = StyleSheet.create({
 const UserFormPDF = ({ formData }) => {
   return (
     <Document>
-      <Page size="A4" style={styles.page}>
-        <View style={styles.section}>
+      {/* <Page size="A4" style={styles.page}> */}
+        {/* <View style={styles.section}> */}
         
-        {/* <Text style={styles.title}>User Form Data</Text> */}
-          {/* {Object.entries(formData).map(([field, value], index) => (
+        <Text style={{marginLeft:"250px",fontWeight:"bold"}}>User Form Data</Text> 
+        <Flex>
+            <Text >UserType:</Text>
+        </Flex>
+           {Object.entries(formData).map(([field, value], index) => (
             <React.Fragment key={index}>
               <Text style={styles.label}>{field}</Text>
               <View style={styles.line} /> 
-              <Text style={styles.value}>{value}</Text>
+              <br />
+              {/* <Text style={styles.value}>{value}</Text> */}
             </React.Fragment>
-          ))} */}
+          ))} 
 
           {/* Add other form fields here */}
-        </View>
-      </Page>
+        {/* </View> */}
+      {/* </Page> */}
     </Document>
   );
 };

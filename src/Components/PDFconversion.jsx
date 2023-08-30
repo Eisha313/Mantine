@@ -166,6 +166,7 @@ const AddUserFormm = ({ userId, userData }) => {
 
   return (
     <div>
+          {showPrint && <UserFormPDF formData={form.values} />}
       <h1 style={{ marginLeft: "440px" }}>Add User</h1>
       <h4
         style={{
@@ -184,19 +185,7 @@ const AddUserFormm = ({ userId, userData }) => {
         >
           Print PDF
         </Button>
-        {showPrint && <UserFormPDF formData={form.values} />}
-        <style>
-        {`
-        
-          @media print {
-            button[type="reset"],
-            button[type="submit"] ,
-            button [type="button"]{
-              display: none;
-            }
-          }
-        `}
-      </style>
+        {/* {showPrint && <UserFormPDF formData={form.values} />} */}
         
          
          
@@ -388,7 +377,7 @@ const AddUserFormm = ({ userId, userData }) => {
                 border: "1px solid red ",
                 width: "150px",
               }}
-            >
+            > 
               Reset
             </Button>
 
@@ -401,7 +390,19 @@ const AddUserFormm = ({ userId, userData }) => {
           </Flex>
         </Grid>
       </form>
-      
+      <style>
+        {`
+          /* Hide the buttons when printing */
+          @media print {
+            button[type="reset"],
+            button[type="submit"] ,
+            button [type="button"],
+            form,h1,h4,navbar,footer,dashboardLayout{
+              display: none;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };
