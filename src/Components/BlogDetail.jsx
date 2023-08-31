@@ -34,6 +34,7 @@ const BlogDetail = ({ match }) => {
   }, [id]);
 
   return (
+
     <div>
       <Title style={{marginLeft:"400px"}}>{blogData.title}</Title>
       <Flex style={{gap:"700px"}}>
@@ -42,6 +43,8 @@ const BlogDetail = ({ match }) => {
     
       <div style={{height:"auto",width:"600px",border:"1px solid orange",padding:"20px",margin:"auto",marginTop:"50px"}} dangerouslySetInnerHTML={{ __html: blogData.content }} />
     </div>
+
+    
   );
 };
 

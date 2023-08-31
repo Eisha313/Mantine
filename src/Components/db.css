@@ -157,4 +157,12 @@
   .icons{
     margin-left:250px;
     border-radius: 50%;
-  } */
+  } 
+
+  @media print {
+    .Navbar,
+    header,
+    .Footer {
+      display: none !important;
+    }
+  }

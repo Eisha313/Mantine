@@ -292,17 +292,21 @@ const Dashboard = () => {
       }
       header={
         <Header
+       
           height={100}
           p="xs"
           bg={"black"}
           style={{
             display: "flex",
             alignItems: "center",
+            ["@media print"]: {
+              display: "none !important",
+            },
           }}
         >
           <Flex justify={"space-between"} w={"100%"} px={20} py={10}>
             <Group spacing={"md"}>
-              a
+              
               <Flex align={"center"}>
                 <Phone size={36} strokeWidth={2} color={"white"} />
                 <Text color="white">+1(240)307-3416</Text>
@@ -331,7 +335,11 @@ const Dashboard = () => {
         },
       })}
     >
-      <Footer className="Footer" height={60} p="md">
+      <Footer className="Footer" height={60} p="md" style={{
+            ["@media print"]: {
+              display: "none !important",
+            },
+          }}>
         <Flex align={"center"}></Flex>
         <Text>Contact us today</Text>
       </Footer>
@@ -357,6 +365,9 @@ const Dashboard = () => {
           />
         </Flex> */}
     </AppShell>
+    
+  
+    
   );
 };
 
